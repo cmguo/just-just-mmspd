@@ -2,7 +2,6 @@
 
 #include "ppbox/mmspd/Common.h"
 #include "ppbox/mmspd/MmspDispatcher.h"
-#include "ppbox/mmspd/Transport.h"
 
 #include <util/protocol/mmsp/MmspError.h>
 #include <util/protocol/mmsp/MmspMacToViewerMessage.h>
