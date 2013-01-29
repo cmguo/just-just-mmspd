@@ -3,8 +3,7 @@
 #ifndef _PPBOX_MMSPD_MMSPD_MODULE_H_
 #define _PPBOX_MMSPD_MMSPD_MODULE_H_
 
-#include <util/protocol/mmsp/MmspServerManager.h>
-
+#include <framework/network/ServerManager.h>
 #include <framework/string/Url.h>
 
 namespace ppbox
@@ -22,7 +21,7 @@ namespace ppbox
 
         class MmspdModule 
             : public ppbox::common::CommonModuleBase<MmspdModule>
-            , public util::protocol::MmspServerManager<MmspSession, MmspdModule>
+            , public framework::network::ServerManager<MmspSession, MmspdModule>
         {
         public:
             MmspdModule(

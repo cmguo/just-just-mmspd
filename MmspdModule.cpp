@@ -7,6 +7,8 @@
 
 #include <ppbox/dispatch/DispatchModule.h>
 
+#include <framework/network/TcpSocket.hpp>
+
 namespace ppbox
 {
     namespace mmspd
@@ -15,7 +17,7 @@ namespace ppbox
         MmspdModule::MmspdModule(
             util::daemon::Daemon & daemon)
             : ppbox::common::CommonModuleBase<MmspdModule>(daemon, "MmspdModule")
-            , util::protocol::MmspServerManager<MmspSession, MmspdModule>(daemon.io_svc())
+            , framework::network::ServerManager<MmspSession, MmspdModule>(daemon.io_svc())
             , addr_("0.0.0.0:1755")
             , dispatch_module_(util::daemon::use_module<ppbox::dispatch::DispatchModule>(get_daemon()))
         {
