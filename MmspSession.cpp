@@ -49,8 +49,6 @@ namespace ppbox
             }
         }
 
-        static void nop_deletor(void *) {}
-
 #define SERVER_VERSION L"9.01.01.3841"
 #define SERVER_VERSION_LENGTH (sizeof(SERVER_VERSION) / 2)
 
@@ -76,7 +74,7 @@ namespace ppbox
             switch (request().id()) {
                 case MmspViewerToMacMessage::CONNECT:
                     {
-                        MmspDataConnect & req(request().as<MmspDataConnect>());
+                        //MmspDataConnect & req(request().as<MmspDataConnect>());
                         MmspDataReportConnectedEx & rsp(response().get<MmspDataReportConnectedEx>());
                         rsp.playIncarnation = 0xf0f0f0ef; // MMS_DISABLE_PACKET_PAIR
                         rsp.cbServerVersionInfo = SERVER_VERSION_LENGTH;
@@ -114,8 +112,8 @@ namespace ppbox
                     break;
                 case MmspViewerToMacMessage::STREAM_SWITCH:
                     {
-                        MmspDataStreamSwitch & req(request().as<MmspDataStreamSwitch>());
-                        MmspDataReportStreamSwitch & rsp(response().get<MmspDataReportStreamSwitch>());
+                        //MmspDataStreamSwitch & req(request().as<MmspDataStreamSwitch>());
+                        //MmspDataReportStreamSwitch & rsp(response().get<MmspDataReportStreamSwitch>());
                     }
                     break;
                 case MmspViewerToMacMessage::START_PLAYING:
@@ -142,7 +140,7 @@ namespace ppbox
                     break;
                 case MmspViewerToMacMessage::CLOSE_FILE:
                     {
-                        MmspDataCloseFile & req(request().as<MmspDataCloseFile>());
+                        //MmspDataCloseFile & req(request().as<MmspDataCloseFile>());
                         if (dispatcher_) {
                             dispatcher_->close(ec);
                             dispatcher_ = NULL;
