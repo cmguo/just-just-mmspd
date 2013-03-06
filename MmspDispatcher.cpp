@@ -88,10 +88,6 @@ namespace ppbox
             return true;
         }
 
-#ifdef BOOST_WINDOWS_API
-#  define gmtime_r(x, y) (gmtime_s(y, x), y)
-#endif
-
         void MmspDispatcher::handle_open(
             MmspDataReportOpenFile & rsp, 
             ppbox::dispatch::response_t const & resp, 

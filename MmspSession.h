@@ -41,9 +41,9 @@ namespace ppbox
                 boost::system::error_code const & ec);
 
         private:
+            MmspdModule & mgr_;
             std::string path_;
             std::string transport_;
-            MmspdModule & mgr_;
             boost::uint32_t session_id_;
             MmspDispatcher * dispatcher_;
             boost::uint32_t file_id_;
