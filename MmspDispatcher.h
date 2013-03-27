@@ -3,7 +3,6 @@
 #ifndef _PPBOX_MMSPD_MMSP_DISPATCHER_H_
 #define _PPBOX_MMSPD_MMSP_DISPATCHER_H_
 
-
 #include <ppbox/dispatch/CustomDispatcher.h>
 #include <ppbox/dispatch/Sink.h>
 
