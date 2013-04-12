@@ -4,6 +4,7 @@
 #include "ppbox/mmspd/MmspdModule.h"
 #include "ppbox/mmspd/MmspDispatcher.h"
 #include "ppbox/mmspd/MmspSession.h"
+#include "ppbox/mmspd/ClassRegister.h"
 
 #include <ppbox/dispatch/DispatchModule.h>
 
