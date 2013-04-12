@@ -7,6 +7,8 @@
 
 #include <util/protocol/mmsp/MmspMacToViewerMessage.h>
 #include <util/protocol/mmsp/MmspViewerToMacMessage.h>
+#include <util/protocol/mmsp/MmspMessage.hpp>
+#include <util/protocol/mmsp/MmspSocket.hpp>
 #include <util/protocol/mmsp/MmspError.h>
 using namespace util::protocol;
 
@@ -74,7 +76,8 @@ namespace ppbox
             switch (request().id()) {
                 case MmspViewerToMacMessage::CONNECT:
                     {
-                        //MmspDataConnect & req(request().as<MmspDataConnect>());
+                        MmspDataConnect & req(request().as<MmspDataConnect>());
+                        (void)req;
                         MmspDataReportConnectedEx & rsp(response().get<MmspDataReportConnectedEx>());
                         rsp.playIncarnation = 0xf0f0f0ef; // MMS_DISABLE_PACKET_PAIR
                         rsp.cbServerVersionInfo = SERVER_VERSION_LENGTH;
@@ -112,8 +115,10 @@ namespace ppbox
                     break;
                 case MmspViewerToMacMessage::STREAM_SWITCH:
                     {
-                        //MmspDataStreamSwitch & req(request().as<MmspDataStreamSwitch>());
-                        //MmspDataReportStreamSwitch & rsp(response().get<MmspDataReportStreamSwitch>());
+                        MmspDataStreamSwitch & req(request().as<MmspDataStreamSwitch>());
+                        (void)req;
+                        MmspDataReportStreamSwitch & rsp(response().get<MmspDataReportStreamSwitch>());
+                        (void)rsp;
                     }
                     break;
                 case MmspViewerToMacMessage::START_PLAYING:
@@ -194,7 +199,7 @@ namespace ppbox
                 MmspDataReportEndOfStream & rsp(msg.get<MmspDataReportEndOfStream>());
                 rsp.playIncarnation = play_incarnation_;
                 boost::system::error_code ec1;
-                write(msg, ec1);
+                write_msg(msg, ec1);
             } else if (ec != boost::asio::error::operation_aborted) {
                 boost::system::error_code ec1;
                 cancel(ec1);
@@ -205,10 +210,10 @@ namespace ppbox
         {
             //response().head().get_content(std::cout);
 
-            if (request().header().MID == MmspViewerToMacMessage::READ_BLOCK) {
+            if (request().id() == MmspViewerToMacMessage::READ_BLOCK) {
                 boost::system::error_code ec;
                 dispatcher_->write_header(*this, ec);
-            } else if (request().header().MID == MmspViewerToMacMessage::START_PLAYING) {
+            } else if (request().id() == MmspViewerToMacMessage::START_PLAYING) {
                 boost::system::error_code ec;
                 dispatcher_->resume(ec);
             }
