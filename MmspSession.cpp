@@ -51,13 +51,13 @@ namespace ppbox
             }
         }
 
-#define SERVER_VERSION L"9.01.01.3841"
-#define SERVER_VERSION_LENGTH (sizeof(SERVER_VERSION) / 2)
+#define SERVER_VERSION "9.01.01.3841"
+#define SERVER_VERSION_LENGTH sizeof(SERVER_VERSION)
 
-#define AUTH_TYPE L"NTLM"
-#define AUTH_TYPE_LENGTH (sizeof(AUTH_TYPE) / 2)
+#define AUTH_TYPE "NTLM"
+#define AUTH_TYPE_LENGTH sizeof(AUTH_TYPE)
 
-#define FUNNEL_NAME L"Funnel Of The Gods"
+#define FUNNEL_NAME "Funnel Of The Gods"
 
         template <size_t n>
         static std::vector<boost::uint16_t> wstr_to_vec(
