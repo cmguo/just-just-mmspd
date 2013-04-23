@@ -53,8 +53,7 @@ namespace ppbox
             std::string const & transport, 
             boost::system::error_code & ec)
         {
-            util::stream::Sink * sink = new util::stream::TcpSocket(mmsp_sock);
-            sink_ = new ppbox::dispatch::WrapSink(*sink);
+            sink_ = new util::stream::TcpSocket(mmsp_sock);
             return CustomDispatcher::setup(-1, *sink_, ec);
         }
 
@@ -81,7 +80,6 @@ namespace ppbox
         bool MmspDispatcher::teardown(
             boost::system::error_code & ec)
         {
-            delete &sink_->sink();
             delete sink_;
             sink_ = NULL;
             ec.clear();
