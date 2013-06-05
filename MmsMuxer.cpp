@@ -4,7 +4,7 @@
 #include "ppbox/mmspd/MmsMuxer.h"
 #include "ppbox/mmspd/MmsTransfer.h"
 
-#include <ppbox/mux/transfer/MergeTransfer.h>
+#include <ppbox/mux/filter/MergeFilter.h>
 using namespace ppbox::mux;
 
 #include <util/buffers/BuffersCopy.h>
@@ -17,6 +17,7 @@ namespace ppbox
         MmsMuxer::MmsMuxer()
             : mms_transfer_(NULL)
         {
+            format("asf");
         }
 
         MmsMuxer::~MmsMuxer()
@@ -29,14 +30,13 @@ namespace ppbox
 
         void MmsMuxer::add_stream(
             StreamInfo & info, 
-            std::vector<Transfer *> & transfers)
+            FilterPipe & pipe)
         {
-            AsfMuxer::add_stream(info, transfers);
+            AsfMuxer::add_stream(info, pipe);
             if (mms_transfer_ == NULL) {
                 mms_transfer_ = new MmsTransfer;
             }
-            Transfer * transfer = new MergeTransfer(mms_transfer_);
-            transfers.push_back(transfer);
+            pipe.push_back(new MergeFilter(mms_transfer_));
         }
 
         void MmsMuxer::file_header(
