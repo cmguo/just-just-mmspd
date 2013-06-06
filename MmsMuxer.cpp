@@ -22,10 +22,6 @@ namespace ppbox
 
         MmsMuxer::~MmsMuxer()
         {
-            if (mms_transfer_) {
-                delete mms_transfer_;
-                mms_transfer_ = NULL;
-            }
         }
 
         void MmsMuxer::add_stream(
@@ -36,7 +32,7 @@ namespace ppbox
             if (mms_transfer_ == NULL) {
                 mms_transfer_ = new MmsTransfer;
             }
-            pipe.push_back(new MergeFilter(mms_transfer_));
+            pipe.insert(new MergeFilter(mms_transfer_));
         }
 
         void MmsMuxer::file_header(
