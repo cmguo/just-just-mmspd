@@ -43,7 +43,7 @@ namespace ppbox
         void MmsMuxer::media_info(
             MediaInfo & info) const
         {
-            MuxerBase::media_info(info);
+            Muxer::media_info(info);
             Sample tag;
             const_cast<MmsMuxer *>(this)->AsfMuxer::file_header(tag);
             mms_transfer_->file_header(tag);
