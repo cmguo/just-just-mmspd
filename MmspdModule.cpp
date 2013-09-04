@@ -53,7 +53,7 @@ namespace ppbox
         void MmspdModule::free_dispatcher(
             MmspDispatcher * dispatcher)
         {
-            dispatch_module_.free_dispatcher(&dispatcher->get_dispatcher());
+            dispatch_module_.free_dispatcher(dispatcher->detach());
             delete dispatcher;
         }
 
