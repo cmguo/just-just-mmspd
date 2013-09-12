@@ -19,7 +19,7 @@ namespace ppbox
             util::daemon::Daemon & daemon)
             : ppbox::common::CommonModuleBase<MmspdModule>(daemon, "MmspdModule")
             , framework::network::ServerManager<MmspSession, MmspdModule>(daemon.io_svc())
-            , addr_("0.0.0.0:1755")
+            , addr_("0.0.0.0:1755+")
             , dispatch_module_(util::daemon::use_module<ppbox::dispatch::DispatchModule>(get_daemon()))
         {
             daemon.config().register_module("MmspdModule")
