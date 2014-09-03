@@ -14,8 +14,10 @@ namespace ppbox
     namespace mmspd
     {
 
-        MmsMuxer::MmsMuxer()
-            : mms_transfer_(NULL)
+        MmsMuxer::MmsMuxer(
+            boost::asio::io_service & io_svc)
+            : AsfMuxer(io_svc)
+            , mms_transfer_(NULL)
         {
             format("asf");
         }

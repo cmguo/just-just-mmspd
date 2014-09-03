@@ -16,7 +16,8 @@ namespace ppbox
             : public ppbox::mux::AsfMuxer
         {
         public:
-            MmsMuxer();
+            MmsMuxer(
+                boost::asio::io_service & io_svc);
 
             ~MmsMuxer();
 
