@@ -1,12 +1,12 @@
 // MmspdModule.h
 
-#ifndef _PPBOX_MMSPD_MMSPD_MODULE_H_
-#define _PPBOX_MMSPD_MMSPD_MODULE_H_
+#ifndef _JUST_MMSPD_MMSPD_MODULE_H_
+#define _JUST_MMSPD_MMSPD_MODULE_H_
 
 #include <framework/network/ServerManager.h>
 #include <framework/string/Url.h>
 
-namespace ppbox
+namespace just
 {
     namespace dispatch
     {
@@ -20,7 +20,7 @@ namespace ppbox
         class MmspDispatcher;
 
         class MmspdModule 
-            : public ppbox::common::CommonModuleBase<MmspdModule>
+            : public just::common::CommonModuleBase<MmspdModule>
             , public framework::network::ServerManager<MmspSession, MmspdModule>
         {
         public:
@@ -35,7 +35,7 @@ namespace ppbox
             virtual void shutdown();
 
         public:
-            using ppbox::common::CommonModuleBase<MmspdModule>::io_svc;
+            using just::common::CommonModuleBase<MmspdModule>::io_svc;
 
             MmspDispatcher * alloc_dispatcher(
                 framework::string::Url & url, 
@@ -46,10 +46,10 @@ namespace ppbox
 
         private:
             framework::network::NetName addr_;
-            ppbox::dispatch::DispatchModule & dispatch_module_;
+            just::dispatch::DispatchModule & dispatch_module_;
         };
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MMSPD_MMSPD_MODULE_H_
+#endif // _JUST_MMSPD_MMSPD_MODULE_H_

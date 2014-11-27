@@ -1,26 +1,26 @@
 // MmspdModule.cpp
 
-#include "ppbox/mmspd/Common.h"
-#include "ppbox/mmspd/MmspdModule.h"
-#include "ppbox/mmspd/MmspDispatcher.h"
-#include "ppbox/mmspd/MmspSession.h"
-#include "ppbox/mmspd/ClassRegister.h"
+#include "just/mmspd/Common.h"
+#include "just/mmspd/MmspdModule.h"
+#include "just/mmspd/MmspDispatcher.h"
+#include "just/mmspd/MmspSession.h"
+#include "just/mmspd/ClassRegister.h"
 
-#include <ppbox/dispatch/DispatchModule.h>
+#include <just/dispatch/DispatchModule.h>
 
 #include <framework/network/TcpSocket.hpp>
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
 
         MmspdModule::MmspdModule(
             util::daemon::Daemon & daemon)
-            : ppbox::common::CommonModuleBase<MmspdModule>(daemon, "MmspdModule")
+            : just::common::CommonModuleBase<MmspdModule>(daemon, "MmspdModule")
             , framework::network::ServerManager<MmspSession, MmspdModule>(daemon.io_svc())
             , addr_("0.0.0.0:1755+")
-            , dispatch_module_(util::daemon::use_module<ppbox::dispatch::DispatchModule>(get_daemon()))
+            , dispatch_module_(util::daemon::use_module<just::dispatch::DispatchModule>(get_daemon()))
         {
             daemon.config().register_module("MmspdModule")
                 << CONFIG_PARAM_NAME_RDWR("addr",addr_ );
@@ -58,4 +58,4 @@ namespace ppbox
         }
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just

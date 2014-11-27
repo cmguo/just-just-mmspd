@@ -1,19 +1,19 @@
 // MmsTransfer.h
 
-#ifndef _PPBOX_MUX_MMS_MMS_TRANSFER_H_
-#define _PPBOX_MUX_MMS_MMS_TRANSFER_H_
+#ifndef _JUST_MUX_MMS_MMS_TRANSFER_H_
+#define _JUST_MUX_MMS_MMS_TRANSFER_H_
 
-#include <ppbox/mux/Transfer.h>
+#include <just/mux/Transfer.h>
 
 #include <util/protocol/mmsp/MmspData.h>
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
 
         class MmsTransfer
-            : public ppbox::mux::Transfer
+            : public just::mux::Transfer
         {
         public:
             MmsTransfer();
@@ -22,11 +22,11 @@ namespace ppbox
 
         public:
             virtual void transfer(
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
         public:
             void file_header(
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
         private:
             std::vector<boost::uint8_t> header_buffer_;
@@ -34,6 +34,6 @@ namespace ppbox
         };
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MUX_MMS_MMS_TRANSFER_H_
+#endif // _JUST_MUX_MMS_MMS_TRANSFER_H_

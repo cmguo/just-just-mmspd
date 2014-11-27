@@ -1,13 +1,13 @@
 // MmspSession.h
 
-#ifndef _PPBOX_MMSPD_MMSP_SESSION_H_
-#define _PPBOX_MMSPD_MMSP_SESSION_H_
+#ifndef _JUST_MMSPD_MMSP_SESSION_H_
+#define _JUST_MMSPD_MMSP_SESSION_H_
 
 #include <util/protocol/mmsp/MmspServer.h>
 
 #include <boost/shared_ptr.hpp>
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
@@ -53,6 +53,6 @@ namespace ppbox
         };
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MMSPD_MMSP_SESSION_H_
+#endif // _JUST_MMSPD_MMSP_SESSION_H_

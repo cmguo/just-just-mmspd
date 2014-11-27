@@ -1,9 +1,9 @@
 // RtpDispatcher.h
 
-#ifndef _PPBOX_MMSPD_MMSP_DISPATCHER_H_
-#define _PPBOX_MMSPD_MMSP_DISPATCHER_H_
+#ifndef _JUST_MMSPD_MMSP_DISPATCHER_H_
+#define _JUST_MMSPD_MMSP_DISPATCHER_H_
 
-#include <ppbox/dispatch/CustomDispatcher.h>
+#include <just/dispatch/CustomDispatcher.h>
 
 #include <boost/asio/ip/tcp.hpp>
 
@@ -18,18 +18,18 @@ namespace util
     }
 }
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {  
 
         class MmspDispatcher 
-            : public ppbox::dispatch::CustomDispatcher
+            : public just::dispatch::CustomDispatcher
         {
         public:
 
             MmspDispatcher(
-                ppbox::dispatch::DispatcherBase & dispatcher);
+                just::dispatch::DispatcherBase & dispatcher);
 
             ~MmspDispatcher();
 
@@ -37,7 +37,7 @@ namespace ppbox
             void async_open(
                 framework::string::Url & url, 
                 util::protocol::MmspDataReportOpenFile & rsp, 
-                ppbox::dispatch::response_t  const & resp);
+                just::dispatch::response_t  const & resp);
 
             bool setup(
                 boost::asio::ip::tcp::socket & mmsp_sock, 
@@ -50,8 +50,8 @@ namespace ppbox
 
             void async_play(
                 util::protocol::MmspDataStartPlaying & req, 
-                ppbox::dispatch::response_t const & seek_resp, 
-                ppbox::dispatch::response_t const & resp);
+                just::dispatch::response_t const & seek_resp, 
+                just::dispatch::response_t const & resp);
 
             bool teardown(
                 boost::system::error_code & ec);
@@ -59,21 +59,21 @@ namespace ppbox
         private:
             void handle_open(
                 util::protocol::MmspDataReportOpenFile & rsp, 
-                ppbox::dispatch::response_t  const & resp, 
+                just::dispatch::response_t  const & resp, 
                 boost::system::error_code ec);
 
             void handle_seek(
                 std::string & rtp_info, 
-                ppbox::dispatch::SeekRange & range, 
-                ppbox::dispatch::response_t const & resp, 
+                just::dispatch::SeekRange & range, 
+                just::dispatch::response_t const & resp, 
                 boost::system::error_code ec);
 
         private:
-            ppbox::avbase::MediaInfo media_info_;
+            just::avbase::MediaInfo media_info_;
             util::stream::Sink * sink_;
         };
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MMSPD_RTP_DISPATCHER_H_
+#endif // _JUST_MMSPD_RTP_DISPATCHER_H_

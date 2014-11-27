@@ -1,7 +1,7 @@
 // MmspSession.cpp
 
-#include "ppbox/mmspd/Common.h"
-#include "ppbox/mmspd/MmspDispatcher.h"
+#include "just/mmspd/Common.h"
+#include "just/mmspd/MmspDispatcher.h"
 
 #include <util/protocol/mmsp/MmspError.h>
 #include <util/protocol/mmsp/MmspMacToViewerMessage.h>
@@ -20,15 +20,15 @@ using namespace boost::system;
 
 #include <fstream>
 
-FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("ppbox.mmspd.MmspDispatcher", framework::logger::Debug)
+FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("just.mmspd.MmspDispatcher", framework::logger::Debug)
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
         MmspDispatcher::MmspDispatcher(
-            ppbox::dispatch::DispatcherBase & dispatcher)
-            : ppbox::dispatch::CustomDispatcher(dispatcher)
+            just::dispatch::DispatcherBase & dispatcher)
+            : just::dispatch::CustomDispatcher(dispatcher)
             , sink_(NULL)
         {
         }
@@ -40,9 +40,9 @@ namespace ppbox
         void MmspDispatcher::async_open(
             framework::string::Url & url, 
             MmspDataReportOpenFile & rsp, 
-            ppbox::dispatch::response_t  const & resp)
+            just::dispatch::response_t  const & resp)
         {
-            url.param(ppbox::dispatch::param_format, "mms");
+            url.param(just::dispatch::param_format, "mms");
             url.param("mux.Asf.packet_length", "1024");
             CustomDispatcher::async_open(url, 
                 boost::bind(&MmspDispatcher::handle_open, this, boost::ref(rsp), resp, _1));
@@ -70,10 +70,10 @@ namespace ppbox
 
         void MmspDispatcher::async_play(
             util::protocol::MmspDataStartPlaying & req, 
-            ppbox::dispatch::response_t const & seek_resp, 
-            ppbox::dispatch::response_t const & resp)
+            just::dispatch::response_t const & seek_resp, 
+            just::dispatch::response_t const & resp)
         {
-            ppbox::dispatch::SeekRange range;
+            just::dispatch::SeekRange range;
             return CustomDispatcher::async_play(range, seek_resp, resp);
         }
         
@@ -88,7 +88,7 @@ namespace ppbox
 
         void MmspDispatcher::handle_open(
             MmspDataReportOpenFile & rsp, 
-            ppbox::dispatch::response_t const & resp, 
+            just::dispatch::response_t const & resp, 
             boost::system::error_code ec)
         {
             if (!ec) {
@@ -109,4 +109,4 @@ namespace ppbox
         }
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just

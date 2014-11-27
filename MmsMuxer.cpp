@@ -1,15 +1,15 @@
 // MmsMuxer.cpp
 
-#include "ppbox/mmspd/Common.h"
-#include "ppbox/mmspd/MmsMuxer.h"
-#include "ppbox/mmspd/MmsTransfer.h"
+#include "just/mmspd/Common.h"
+#include "just/mmspd/MmsMuxer.h"
+#include "just/mmspd/MmsTransfer.h"
 
-#include <ppbox/mux/filter/MergeFilter.h>
-using namespace ppbox::mux;
+#include <just/mux/filter/MergeFilter.h>
+using namespace just::mux;
 
 #include <util/buffers/BuffersCopy.h>
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
@@ -56,4 +56,4 @@ namespace ppbox
         }
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just

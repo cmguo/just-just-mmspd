@@ -1,10 +1,10 @@
 // ClassRegister.h
 
-#ifndef _PPBOX_MMSPD_CLASS_REGISTER_H_
-#define _PPBOX_MMSPD_CLASS_REGISTER_H_
+#ifndef _JUST_MMSPD_CLASS_REGISTER_H_
+#define _JUST_MMSPD_CLASS_REGISTER_H_
 
 #include <util/tools/ClassRegister.h>
 
-#include "ppbox/mmspd/MmsMuxer.h"
+#include "just/mmspd/MmsMuxer.h"
 
-#endif //_PPBOX_MMSPD_CLASS_REGISTER_H_
+#endif //_JUST_MMSPD_CLASS_REGISTER_H_

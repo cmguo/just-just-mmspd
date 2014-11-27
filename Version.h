@@ -1,12 +1,12 @@
 // Version.h
 
-#ifndef _PPBOX_MMSPD_VERSION_H_
-#define _PPBOX_MMSPD_VERSION_H_
+#ifndef _JUST_MMSPD_VERSION_H_
+#define _JUST_MMSPD_VERSION_H_
 
-#include "ppbox/mmspd/Define.h"
+#include "just/mmspd/Define.h"
 
 #include <framework/system/AutoVersion.h>
 
-#include <ppbox/common/Version.h>
+#include <just/common/Version.h>
 
 #endif 

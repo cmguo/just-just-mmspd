@@ -1,11 +1,11 @@
 // MmsMuxer.h
 
-#ifndef _PPBOX_MUX_MMS_MMS_MUXER_H_
-#define _PPBOX_MUX_MMS_MMS_MUXER_H_
+#ifndef _JUST_MUX_MMS_MMS_MUXER_H_
+#define _JUST_MUX_MMS_MMS_MUXER_H_
 
-#include <ppbox/mux/asf/AsfMuxer.h>
+#include <just/mux/asf/AsfMuxer.h>
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
@@ -13,7 +13,7 @@ namespace ppbox
         class MmsTransfer;
 
         class MmsMuxer
-            : public ppbox::mux::AsfMuxer
+            : public just::mux::AsfMuxer
         {
         public:
             MmsMuxer(
@@ -23,23 +23,23 @@ namespace ppbox
 
         public:
             virtual void media_info(
-                ppbox::mux::MediaInfo & info) const;
+                just::mux::MediaInfo & info) const;
 
         private:
             virtual void add_stream(
-                ppbox::mux::StreamInfo & info, 
-                ppbox::mux::FilterPipe & pipe);
+                just::mux::StreamInfo & info, 
+                just::mux::FilterPipe & pipe);
 
             virtual void file_header(
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
         private:
             MmsTransfer * mms_transfer_;
         };
 
-        PPBOX_REGISTER_MUXER("mms", MmsMuxer);
+        JUST_REGISTER_MUXER("mms", MmsMuxer);
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MUX_MMS_MMS_MUXER_H_
+#endif // _JUST_MUX_MMS_MMS_MUXER_H_

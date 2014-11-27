@@ -1,9 +1,9 @@
 // MmspSession.cpp
 
-#include "ppbox/mmspd/Common.h"
-#include "ppbox/mmspd/MmspSession.h"
-#include "ppbox/mmspd/MmspDispatcher.h"
-#include "ppbox/mmspd/MmspdModule.h"
+#include "just/mmspd/Common.h"
+#include "just/mmspd/MmspSession.h"
+#include "just/mmspd/MmspDispatcher.h"
+#include "just/mmspd/MmspdModule.h"
 
 #include <util/protocol/mmsp/MmspMacToViewerMessage.h>
 #include <util/protocol/mmsp/MmspViewerToMacMessage.h>
@@ -19,9 +19,9 @@ using namespace framework::string;
 
 using namespace boost::system;
 
-FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("ppbox.mmspd.MmspSession", framework::logger::Debug)
+FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("just.mmspd.MmspSession", framework::logger::Debug)
 
-namespace ppbox
+namespace just
 {
     namespace mmspd
     {
@@ -220,4 +220,4 @@ namespace ppbox
         }
 
     } // namespace mmspd
-} // namespace ppbox
+} // namespace just
