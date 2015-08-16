@@ -30,16 +30,18 @@ namespace just
         {
         }
 
-        boost::system::error_code MmspdModule::startup()
+        bool MmspdModule::startup(
+            boost::system::error_code & ec)
         {
-            boost::system::error_code ec;
             start(addr_,ec);
-            return ec;
+            return !ec;
         }
 
-        void MmspdModule::shutdown()
+        bool MmspdModule::shutdown(
+            boost::system::error_code & ec)
         {
-            stop();
+            stop(ec);
+            return !ec;
         }
 
         MmspDispatcher * MmspdModule::alloc_dispatcher(
